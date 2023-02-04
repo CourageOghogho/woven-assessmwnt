@@ -5,6 +5,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
@@ -14,7 +16,7 @@ import lombok.*;
 @Table(name = "job_tbl")
 public class Job extends BaseEntity{
     private String name;
-    private Double price;
+    private BigDecimal price;
     @ManyToOne
     private Contract contract;
 }

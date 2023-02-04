@@ -4,6 +4,8 @@ import com.woven.wovenfinance.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
@@ -14,8 +16,9 @@ import lombok.*;
 public class Profile extends BaseEntity{
     private String name;
     private String email;
+    private String password;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
-    private Double balance;
+    private BigDecimal balance;
 }
