@@ -1,5 +1,6 @@
 package com.woven.wovenfinance.model;
 
+import com.woven.wovenfinance.enums.PaymentStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -17,6 +18,7 @@ import java.math.BigDecimal;
 public class Job extends BaseEntity{
     private String name;
     private BigDecimal price;
+    private PaymentStatus paymentStatus;
     @ManyToOne
     private Contract contract;
 }
