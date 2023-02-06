@@ -15,7 +15,10 @@ import java.math.BigDecimal;
 @Table(name = "profile_tbl")
 public class Profile extends BaseEntity{
     private String name;
+
+    @Column(unique = true, nullable = false)
     private String email;
+    @Column(nullable = false)
     private String password;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
