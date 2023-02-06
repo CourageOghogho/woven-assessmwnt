@@ -26,7 +26,7 @@ public class BalanceServiceImpl implements BalanceServer {
     @Override
     public PayResponse deposit(DepositRequest request) {
         Profile profile=getLoggedInUser();
-        BigDecimal currentUnpaidAmount=jobRepository.findByClientAndPaymentStatus(profile, PaymentStatus.UNPAID).stream()
+        BigDecimal currentUnpaidAmount=jobRepository.findJobsByClientIdAndPaymentStatus(profile.getId(), PaymentStatus.UNPAID).stream()
                 .map(Job::getPrice)
                 .reduce(BigDecimal::add)
                 .get();
@@ -45,6 +45,3 @@ public class BalanceServiceImpl implements BalanceServer {
                 orElseThrow(() -> new UserNotFoundException("No user found, please log in"));
     }
 }
-
-//    Deposits money into the the the balance of a client,
-//    a client can't deposit more than 25% his total of jobs to pay. (at the deposit moment)

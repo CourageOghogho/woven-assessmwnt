@@ -18,7 +18,7 @@ public class Contract extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private ContractStatus status;
     @JsonIgnore
-    @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Job> jobs;
     @ManyToOne
     @JoinColumn(name = "client_id")
