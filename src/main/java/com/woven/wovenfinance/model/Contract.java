@@ -1,6 +1,7 @@
 package com.woven.wovenfinance.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.woven.wovenfinance.enums.ContractStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,9 +15,10 @@ import java.util.Set;
 @Table(name = "contract_tbl")
 public class Contract extends BaseEntity{
     private String name;
-
+    @Enumerated(EnumType.STRING)
+    private ContractStatus status;
     @JsonIgnore
-    @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Job> jobs;
     @ManyToOne
     @JoinColumn(name = "client_id")
